@@ -106,13 +106,12 @@ class _ClientsScreenState extends State<ClientsScreen> {
             ),
           ),
 
-          // Recherche
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
               onChanged: (v) => setState(() => _recherche = v),
               decoration: const InputDecoration(
-                hintText: 'Rechercher une client…',
+                hintText: 'Rechercher un client…',
                 prefixIcon: Icon(Icons.search_rounded, color: AppTheme.texteClair),
               ),
             ),
@@ -140,7 +139,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                         Icon(Icons.person_outline_rounded, size: 56, color: AppTheme.rose.withOpacity(0.5)),
                         const SizedBox(height: 12),
                         Text(
-                          _recherche.isEmpty ? 'Aucune client enregistrée\nAjoutez votre première client !' : 'Aucun résultat',
+                          _recherche.isEmpty ? 'Aucun client enregistré\nAjoutez votre premier client !' : 'Aucun résultat',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.nunito(fontSize: 15, color: AppTheme.texteClair),
                         ),
@@ -267,7 +266,6 @@ class _ClientCard extends StatelessWidget {
   }
 }
 
-// ── Fiche client ──────────────────────────────────────────────────────────────
 class _FicheClientScreen extends StatelessWidget {
   final Client client;
   const _FicheClientScreen({required this.client});
@@ -289,7 +287,6 @@ class _FicheClientScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // Avatar
             Container(
               width: 80,
               height: 80,
@@ -443,7 +440,6 @@ class _InfoItem extends StatelessWidget {
   }
 }
 
-// ── Formulaire client ──────────────────────────────────────────────────────────
 class _ClientForm extends StatefulWidget {
   final Client? client;
   const _ClientForm({this.client});
@@ -488,7 +484,7 @@ class _ClientFormState extends State<_ClientForm> {
             Center(child: Container(width: 40, height: 4, decoration: BoxDecoration(color: AppTheme.rosePale, borderRadius: BorderRadius.circular(4)))),
             const SizedBox(height: 16),
             Text(
-              widget.client == null ? 'Nouvelle client' : 'Modifier la fiche',
+              widget.client == null ? 'Nouveau client' : 'Modifier la fiche',
               style: GoogleFonts.playfairDisplay(fontSize: 22, fontWeight: FontWeight.w700, color: AppTheme.texte),
             ),
             const SizedBox(height: 20),

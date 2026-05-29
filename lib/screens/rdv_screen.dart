@@ -66,7 +66,6 @@ class _RdvScreenState extends State<RdvScreen> {
         _rdvs.add(result);
       });
       await StorageService.saveRendezVous(_rdvs);
-      // Mettre à jour la date de visite du client
       final idx = _clients.indexWhere((c) => c.id == result.clientId);
       if (idx != -1) {
         _clients[idx].dateDerniereVisite = result.dateHeure;
@@ -83,7 +82,6 @@ class _RdvScreenState extends State<RdvScreen> {
     return SafeArea(
       child: Column(
         children: [
-          // Header
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Row(
@@ -102,7 +100,6 @@ class _RdvScreenState extends State<RdvScreen> {
             ),
           ),
  
-          // Calendrier
           TableCalendar(
             locale: 'fr_FR',
             firstDay: DateTime(2020),
@@ -151,7 +148,6 @@ class _RdvScreenState extends State<RdvScreen> {
  
           const Divider(height: 1, color: AppTheme.rosePale),
  
-          // Liste des RDV du jour
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
             child: Row(
@@ -292,8 +288,7 @@ class _RdvCard extends StatelessWidget {
     );
   }
 }
- 
-// ── Formulaire RDV ─────────────────────────────────────────────────────────────
+
 class _RdvForm extends StatefulWidget {
   final List<Client> clients;
   final RendezVous? rdv;
@@ -370,8 +365,7 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 20),
  
-            // Cliente
-            Text('Cliente', style: GoogleFonts.nunito(fontWeight: FontWeight.w700, fontSize: 14, color: AppTheme.texteClair)),
+            Text('Client', style: GoogleFonts.nunito(fontWeight: FontWeight.w700, fontSize: 14, color: AppTheme.texteClair)),
             const SizedBox(height: 6),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -383,7 +377,7 @@ class _RdvFormState extends State<_RdvForm> {
                 child: DropdownButton<Client>(
                   value: _client,
                   isExpanded: true,
-                  hint: Text('Choisir une cliente', style: GoogleFonts.nunito(color: AppTheme.texteClair)),
+                  hint: Text('Choisir un client', style: GoogleFonts.nunito(color: AppTheme.texteClair)),
                   items: widget.clients.map((c) => DropdownMenuItem(
                         value: c,
                         child: Text(c.nomComplet, style: GoogleFonts.nunito(color: AppTheme.texte, fontWeight: FontWeight.w600)),
@@ -394,7 +388,6 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 16),
  
-            // Date et heure
             Row(
               children: [
                 Expanded(
@@ -468,7 +461,6 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 16),
  
-            // Durée
             Text('Durée', style: GoogleFonts.nunito(fontWeight: FontWeight.w700, fontSize: 14, color: AppTheme.texteClair)),
             const SizedBox(height: 6),
             Wrap(
@@ -507,7 +499,6 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 16),
  
-            // Service
             Text('Prestation', style: GoogleFonts.nunito(fontWeight: FontWeight.w700, fontSize: 14, color: AppTheme.texteClair)),
             const SizedBox(height: 6),
             Wrap(
@@ -536,7 +527,6 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 16),
  
-            // Notes
             TextFormField(
               controller: _notesCtrl,
               decoration: const InputDecoration(labelText: 'Notes (optionnel)'),
@@ -545,7 +535,6 @@ class _RdvFormState extends State<_RdvForm> {
             ),
             const SizedBox(height: 24),
  
-            // Bouton enregistrer
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(

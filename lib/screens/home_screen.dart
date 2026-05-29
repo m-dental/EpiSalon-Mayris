@@ -106,7 +106,6 @@ class _NavItem extends StatelessWidget {
   }
 }
 
-// ── Dashboard ──────────────────────────────────────────────────────────────────
 class _DashboardTab extends StatefulWidget {
   const _DashboardTab();
 
@@ -157,7 +156,6 @@ class _DashboardTabState extends State<_DashboardTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
               Row(
                 children: [
                   Expanded(
@@ -195,7 +193,6 @@ class _DashboardTabState extends State<_DashboardTab> {
               ),
               const SizedBox(height: 24),
 
-              // Statistiques
               Row(
                 children: [
                   _StatCard(
@@ -222,7 +219,6 @@ class _DashboardTabState extends State<_DashboardTab> {
               ),
               const SizedBox(height: 28),
 
-              // RDV du jour
               Text("Agenda d'aujourd'hui",
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 20,
@@ -242,7 +238,6 @@ class _DashboardTabState extends State<_DashboardTab> {
                       child: _RdvDashCard(rdv: rdv),
                     )),
 
-              // Alertes stock
               if (alertes > 0) ...[
                 const SizedBox(height: 24),
                 Text('⚠️ Produits à commander',
